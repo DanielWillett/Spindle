@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    
+    <Nullable>disable</Nullable>
+
+    <LangVersion>preview</LangVersion>
+    <AssemblyName>Rocket.Core</AssemblyName>
+    <OutputPath>$(SolutionDir)Rocket.Compat</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Spindle.Rocket.Compat/Spindle.Rocket.Compat.csproj" Private="false" />
+  </ItemGroup>
+
+</Project>

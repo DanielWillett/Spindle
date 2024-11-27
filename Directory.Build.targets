@@ -1,0 +1,156 @@
+<Project>
+
+  <PropertyGroup>
+    <NoWarn>NU1701;NU1803;NU1903;NU1904;1702,1591,1587,1711,1735,1573,1574,1570,1584,1658</NoWarn>
+    <IsRocketAPIForwarder>False</IsRocketAPIForwarder>
+  </PropertyGroup>
+
+  <!-- Rocket Compat -->
+  <PropertyGroup Condition="'$(ProjectName)' == 'Rocket.API.Compat' Or '$(ProjectName)' == 'Rocket.Core.Compat' Or '$(ProjectName)' == 'Rocket.Unturned.Compat'">
+    <RocketVersion>4.9.3.99</RocketVersion>
+
+    <AssemblyFileVersion>$(RocketVersion)</AssemblyFileVersion>
+    <AssemblyVersion>$(RocketVersion)</AssemblyVersion>
+    <PackageVersion>$(SpindleVersion)</PackageVersion>
+
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+
+    <IsRocketAPIForwarder>True</IsRocketAPIForwarder>
+  </PropertyGroup>
+
+  <!-- Spindle -->
+  <PropertyGroup Condition="!$(IsRocketAPIForwarder)">
+
+    <SpindleVersion>1.0.0</SpindleVersion>
+    <PackageVersion>1.0.0-prerelease001</PackageVersion>
+    <AssemblyVersion>0.1.0.001</AssemblyVersion>
+    <AssemblyFileVersion>$(AssemblyVersion)</AssemblyFileVersion>
+
+  </PropertyGroup>
+
+  <!-- Installation -->
+  <PropertyGroup>
+    <U3DSPath>C:/SteamCMD/steamapps/common/U3DS</U3DSPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+    <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+  </PropertyGroup>
+
+  <!-- Global Usings (JetBrains annotations imports are in Properties/JetBrains.Annotations.cs) -->
+  <ItemGroup>
+    <Using Remove="System.Net.Http" />
+    <Using Remove="System.Text" />
+    <Using Include="JetBrains.Annotations" />
+    <Using Include="SDG.Unturned" />
+    <Using Include="Steamworks" />
+    <Using Include="System.Collections" />
+    <Using Include="UnityEngine" />
+    <Using Include="Steamworks" />
+    <Using Include="System.Threading" />
+    <Using Include="System.Runtime.CompilerServices" />
+    <Using Include="System.Threading.Tasks" />
+    <Using Include="Cysharp.Threading.Tasks" />
+    <Using Include="UnityEngine.Object">
+      <Alias>Object</Alias>
+    </Using>
+    <Using Include="System.Diagnostics.Contracts" />
+    <Using Include="System.Diagnostics.Contracts.PureAttribute">
+      <Alias>PureAttribute</Alias>
+    </Using>
+    <Using Include="System.Version">
+      <Alias>Version</Alias>
+    </Using>
+    <Using Include="System.Action">
+      <Alias>Action</Alias>
+    </Using>
+  </ItemGroup>
+
+  <!-- Unturned Files -->
+  <Choose>
+    <When Condition="exists('$(U3DSPath)/Unturned_Data/Managed/Assembly-CSharp.dll')">
+      <PropertyGroup>
+        <UnturnedDllPath>$(U3DSPath)/Unturned_Data/Managed</UnturnedDllPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <UnturnedDllPath>../Libraries</UnturnedDllPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <ItemGroup>
+    <!-- Unturned -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(UnturnedDllPath)/Assembly-CSharp.dll</HintPath>
+
+      <!-- Prevents copying to output dir -->
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SDG.NetTransport">
+      <HintPath>$(UnturnedDllPath)/SDG.NetTransport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SDG.NetPak.Runtime">
+      <HintPath>$(UnturnedDllPath)/SDG.NetPak.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnturnedDat">
+      <HintPath>$(UnturnedDllPath)/UnturnedDat.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SystemEx">
+      <HintPath>$(UnturnedDllPath)/SystemEx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEx">
+      <HintPath>$(UnturnedDllPath)/UnityEx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <!-- Third Party -->
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>$(UnturnedDllPath)/com.rlabrecque.steamworks.net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UniTask">
+      <HintPath>../Libraries/UniTask.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <!-- Unity -->
+    <Reference Include="UnityEngine">
+      <HintPath>$(UnturnedDllPath)/UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(UnturnedDllPath)/UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(UnturnedDllPath)/UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(UnturnedDllPath)/UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>$(UnturnedDllPath)/UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>$(UnturnedDllPath)/UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="exists('$(U3DSPath)/Unturned_Data/Managed/Assembly-CSharp.dll')">
+    <Exec Command="XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),Assembly-CSharp.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,Assembly-CSharp.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),UnturnedDat.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,UnturnedDat.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),UnityEx.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,UnityEx.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),SDG.NetTransport.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,SDG.NetTransport.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),SDG.NetPak.Runtime.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,SDG.NetPak.Runtime.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),SystemEx.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,SystemEx.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),com.rlabrecque.steamworks.net.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,com.rlabrecque.steamworks.net.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),UnityEngine.CoreModule.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,UnityEngine.CoreModule.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),UnityEngine.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,UnityEngine.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),UnityEngine.ImageConversionModule.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,UnityEngine.ImageConversionModule.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),UnityEngine.PhysicsModule.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,UnityEngine.PhysicsModule.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),UnityEngine.UnityWebRequestModule.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,UnityEngine.UnityWebRequestModule.dll))*&quot;&#xD;&#xA;XCOPY /v /y &quot;$([System.IO.Path]::Combine($(UnturnedDllPath),UnityEngine.AssetBundleModule.dll))*&quot; &quot;$([System.IO.Path]::Combine(../Libraries,UnityEngine.AssetBundleModule.dll))*&quot;" />
+  </Target>
+
+</Project>

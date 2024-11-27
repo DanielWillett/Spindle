@@ -1,0 +1,20 @@
+﻿Logging:
+
+  # Valid values: Trace, Debug, Information, Warning, Error, Critical, None
+  # - Limits what types of messages will be displayed in console where Trace is the least important and Critical is the most.
+  MinimumLevel: Trace
+
+  # Valid Values: ExtendedANSIColor, ANSIColor, or None.
+  # - ExtendedANSIColor: full RGB color. Some newer terminals support this.
+  # - ANSIColor: 8-bit color. Most terminals support this but some may not.
+  # - None: no color
+  # If you are seeing weird symbols in the terminal, try choosing a different value for this property.
+  TerminalColoring: ExtendedANSIColor
+  
+  Rules:
+    # Define minimum levels for specific log sources:
+    - Spindle.Commands.*: Information
+
+# This defines the default language and formatting culture for new players. It also defines how values are formatted in the console.
+DefaultLanguage: en
+DefaultCulture: en-US

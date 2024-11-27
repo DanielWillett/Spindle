@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+
+    <RootNamespace>Rocket</RootNamespace>
+    <LangVersion>10</LangVersion>
+
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <OutputPath>$(SolutionDir)Rocket.Compat</OutputPath>
+
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimized>'$(Configuration)' == 'Release'</Optimized>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="Rocket.Core.Logging.Logger" Alias="Logger" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Spindle.Core/Spindle.Core.csproj" Private="false" />
+  </ItemGroup>
+
+</Project>

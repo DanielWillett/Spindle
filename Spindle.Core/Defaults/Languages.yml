@@ -1,0 +1,680 @@
+﻿# This file stores a list of all known languages.
+
+# Just because a language is in here, doesn't mean it has to have translations.
+# Any translations for a language not in this file will not be used,
+#  so if you add new translations make sure to add information about their language in here.
+
+# default values were populated based on https://partner.steamgames.com/doc/store/localization/languages
+#  SteamName is not required but corresponds to the value under 'API language code' in the above link.
+#    If it's not in that list it shouldn't have a SteamName
+#  Unturned's language names are just the SteamName but with the first letter captialized.
+
+# Use this fiddle to find supported cultures: https://dotnetfiddle.net/AzX0pX
+
+# To give credit to players that contribute to translations, add them to a list of contributors for the language:
+#  - Name: Xyz
+#    Contributors:
+#      - 76500000000000000
+
+Languages:
+  - Name: en
+    DisplayName: English
+    NativeName: English
+    DefaultCultureCode: en-US
+    SteamName: english
+    Aliases:
+      - en
+      - en-us
+    SupportedCultures:
+      - en               # English
+      - en-001           # English (world)
+      - en-029           # English (Caribbean)
+      - en-150           # English (Europe)
+      - en-AE            # English (United Arab Emirates)
+      - en-AG            # English (Antigua & Barbuda)
+      - en-AI            # English (Anguilla)
+      - en-AS            # English (American Samoa)
+      - en-AT            # English (Austria)
+      - en-AU            # English (Australia)
+      - en-BB            # English (Barbados)
+      - en-BE            # English (Belgium)
+      - en-BI            # English (Burundi)
+      - en-BM            # English (Bermuda)
+      - en-BS            # English (Bahamas)
+      - en-BW            # English (Botswana)
+      - en-BZ            # English (Belize)
+      - en-CA            # English (Canada)
+      - en-CC            # English (Cocos [Keeling] Islands)
+      - en-CH            # English (Switzerland)
+      - en-CK            # English (Cook Islands)
+      - en-CM            # English (Cameroon)
+      - en-CX            # English (Christmas Island)
+      - en-CY            # English (Cyprus)
+      - en-DE            # English (Germany)
+      - en-DK            # English (Denmark)
+      - en-DM            # English (Dominica)
+      - en-ER            # English (Eritrea)
+      - en-FI            # English (Finland)
+      - en-FJ            # English (Fiji)
+      - en-FK            # English (Falkland Islands)
+      - en-FM            # English (Micronesia)
+      - en-GB            # English (United Kingdom)
+      - en-GD            # English (Grenada)
+      - en-GG            # English (Guernsey)
+      - en-GH            # English (Ghana)
+      - en-GI            # English (Gibraltar)
+      - en-GM            # English (Gambia)
+      - en-GU            # English (Guam)
+      - en-GY            # English (Guyana)
+      - en-HK            # English (Hong Kong SAR)
+      - en-ID            # English (Indonesia)
+      - en-IE            # English (Ireland)
+      - en-IL            # English (Israel)
+      - en-IM            # English (Isle of Man)
+      - en-IN            # English (India)
+      - en-IO            # English (British Indian Ocean Territory)
+      - en-JE            # English (Jersey)
+      - en-JM            # English (Jamaica)
+      - en-KE            # English (Kenya)
+      - en-KI            # English (Kiribati)
+      - en-KN            # English (St. Kitts & Nevis)
+      - en-KY            # English (Cayman Islands)
+      - en-LC            # English (St. Lucia)
+      - en-LR            # English (Liberia)
+      - en-LS            # English (Lesotho)
+      - en-MG            # English (Madagascar)
+      - en-MH            # English (Marshall Islands)
+      - en-MO            # English (Macao SAR)
+      - en-MP            # English (Northern Mariana Islands)
+      - en-MS            # English (Montserrat)
+      - en-MT            # English (Malta)
+      - en-MU            # English (Mauritius)
+      - en-MV            # English (Maldives)
+      - en-MW            # English (Malawi)
+      - en-MY            # English (Malaysia)
+      - en-NA            # English (Namibia)
+      - en-NF            # English (Norfolk Island)
+      - en-NG            # English (Nigeria)
+      - en-NL            # English (Netherlands)
+      - en-NR            # English (Nauru)
+      - en-NU            # English (Niue)
+      - en-NZ            # English (New Zealand)
+      - en-PG            # English (Papua New Guinea)
+      - en-PH            # English (Philippines)
+      - en-PK            # English (Pakistan)
+      - en-PN            # English (Pitcairn Islands)
+      - en-PR            # English (Puerto Rico)
+      - en-PW            # English (Palau)
+      - en-RW            # English (Rwanda)
+      - en-SB            # English (Solomon Islands)
+      - en-SC            # English (Seychelles)
+      - en-SD            # English (Sudan)
+      - en-SE            # English (Sweden)
+      - en-SG            # English (Singapore)
+      - en-SH            # English (St Helena, Ascension, Tristan da Cunha)
+      - en-SI            # English (Slovenia)
+      - en-SL            # English (Sierra Leone)
+      - en-SS            # English (South Sudan)
+      - en-SX            # English (Sint Maarten)
+      - en-SZ            # English (Eswatini)
+      - en-TC            # English (Turks & Caicos Islands)
+      - en-TK            # English (Tokelau)
+      - en-TO            # English (Tonga)
+      - en-TT            # English (Trinidad & Tobago)
+      - en-TV            # English (Tuvalu)
+      - en-TZ            # English (Tanzania)
+      - en-UG            # English (Uganda)
+      - en-UM            # English (U.S. Outlying Islands)
+      - en-US            # English (United States)
+      - en-VC            # English (St. Vincent & Grenadines)
+      - en-VG            # English (British Virgin Islands)
+      - en-VI            # English (U.S. Virgin Islands)
+      - en-VU            # English (Vanuatu)
+      - en-WS            # English (Samoa)
+      - en-ZA            # English (South Africa)
+      - en-ZM            # English (Zambia)
+      - en-ZW            # English (Zimbabwe)
+  
+  # Unturned does not currently support arabic characters
+  - Name: ar
+    DisplayName: Arabic
+    NativeName: العربية
+    DefaultCultureCode: ar-AE
+    SteamName: arabic
+    Aliases:
+      - ar
+    SupportedCultures:
+      - ar               # Arabic
+      - ar-001           # Arabic (world)
+      - ar-AE            # Arabic (United Arab Emirates)
+      - ar-BH            # Arabic (Bahrain)
+      - ar-DJ            # Arabic (Djibouti)
+      - ar-DZ            # Arabic (Algeria)
+      - ar-EG            # Arabic (Egypt)
+      - ar-ER            # Arabic (Eritrea)
+      - ar-IL            # Arabic (Israel)
+      - ar-IQ            # Arabic (Iraq)
+      - ar-JO            # Arabic (Jordan)
+      - ar-KM            # Arabic (Comoros)
+      - ar-KW            # Arabic (Kuwait)
+      - ar-LB            # Arabic (Lebanon)
+      - ar-LY            # Arabic (Libya)
+      - ar-MA            # Arabic (Morocco)
+      - ar-MR            # Arabic (Mauritania)
+      - ar-OM            # Arabic (Oman)
+      - ar-PS            # Arabic (Palestinian Authority)
+      - ar-QA            # Arabic (Qatar)
+      - ar-SA            # Arabic (Saudi Arabia)
+      - ar-SD            # Arabic (Sudan)
+      - ar-SO            # Arabic (Somalia)
+      - ar-SS            # Arabic (South Sudan)
+      - ar-SY            # Arabic (Syria)
+      - ar-TD            # Arabic (Chad)
+      - ar-TN            # Arabic (Tunisia)
+      - ar-YE            # Arabic (Yemen)
+  
+  - Name: bg
+    DisplayName: Bulgarian
+    NativeName: български език
+    DefaultCultureCode: bg-BG
+    SteamName: bulgarian
+    Aliases:
+      - bg
+    SupportedCultures:
+      - bg               # Bulgarian
+      - bg-BG            # Bulgarian (Bulgaria)
+      
+  - Name: zh-Hans
+    DisplayName: Chinese (Simplified)
+    NativeName: 简体中文
+    DefaultCultureCode: zh-Hans-CN
+    SteamName: schinese
+    Aliases:
+      - zh
+      - zh-cn
+      - chinese
+      - simplified chinese
+      - chinese simplified
+    SupportedCultures:
+      - zh               # Chinese
+      - zh-Hans          # Chinese (Simplified)
+      - zh-Hans-CN       # Chinese (Simplified, China)
+      - zh-Hans-HK       # Chinese (Simplified, Hong Kong SAR)
+      - zh-Hans-MO       # Chinese (Simplified, Macao SAR)
+      - zh-Hans-SG       # Chinese (Simplified, Singapore)
+      
+  - Name: zh-Hant
+    DisplayName: Chinese (Traditional)
+    NativeName: 繁體中文
+    DefaultCultureCode: zh-Hant-TW
+    SteamName: tchinese
+    Aliases:
+      - zh-tw
+      - traditional chinese
+      - chinese traditional
+    SupportedCultures:
+      - zh               # Chinese
+      - zh-Hant          # Chinese (Traditional)
+      - zh-Hant-HK       # Chinese (Traditional, Hong Kong SAR)
+      - zh-Hant-MO       # Chinese (Traditional, Macao SAR)
+      - zh-Hant-TW       # Chinese (Traditional, Taiwan)
+      
+  - Name: cs
+    DisplayName: Czech
+    NativeName: Čeština
+    DefaultCultureCode: cs-CZ
+    SteamName: czech
+    Aliases:
+      - cs
+      - cs-cz
+    SupportedCultures:
+      - cs               # Czech
+      - cs-CZ            # Czech (Czechia)
+      
+  - Name: da
+    DisplayName: Danish
+    NativeName: Dansk
+    DefaultCultureCode: da-DK
+    SteamName: danish
+    Aliases:
+      - da
+      - da-dk
+      - da-gl
+    SupportedCultures:
+      - da               # Danish
+      - da-DK            # Danish (Denmark)
+      - da-GL            # Danish (Greenland)
+      
+  - Name: nl
+    DisplayName: Dutch
+    NativeName: Nederlands
+    DefaultCultureCode: nl-NL
+    SteamName: dutch
+    Aliases:
+      - nl
+    SupportedCultures:
+      - nl               # Dutch
+      - nl-AW            # Dutch (Aruba)
+      - nl-BE            # Dutch (Belgium)
+      - nl-BQ            # Dutch (Bonaire, Sint Eustatius and Saba)
+      - nl-CW            # Dutch (Curaçao)
+      - nl-NL            # Dutch (Netherlands)
+      - nl-SR            # Dutch (Suriname)
+      - nl-SX            # Dutch (Sint Maarten)
+      
+  - Name: fi
+    DisplayName: Finnish
+    NativeName: Suomi
+    DefaultCultureCode: fi-FI
+    SteamName: finnish
+    Aliases:
+      - fi
+      - fi-fi
+    SupportedCultures:
+      - fi               # Finnish
+      - fi-FI            # Finnish (Finland)
+      
+  - Name: fr
+    DisplayName: French
+    NativeName: Français
+    DefaultCultureCode: fr-FR
+    SteamName: french
+    Aliases:
+      - fr
+      - fr-fr
+    SupportedCultures:
+      - fr               # French
+      - fr-029           # French (Caribbean)
+      - fr-BE            # French (Belgium)
+      - fr-BF            # French (Burkina Faso)
+      - fr-BI            # French (Burundi)
+      - fr-BJ            # French (Benin)
+      - fr-BL            # French (St. Barthélemy)
+      - fr-CA            # French (Canada)
+      - fr-CD            # French (Congo [DRC])
+      - fr-CF            # French (Central African Republic)
+      - fr-CG            # French (Congo)
+      - fr-CH            # French (Switzerland)
+      - fr-CI            # French (Côte d’Ivoire)
+      - fr-CM            # French (Cameroon)
+      - fr-DJ            # French (Djibouti)
+      - fr-DZ            # French (Algeria)
+      - fr-FR            # French (France)
+      - fr-GA            # French (Gabon)
+      - fr-GF            # French (French Guiana)
+      - fr-GN            # French (Guinea)
+      - fr-GP            # French (Guadeloupe)
+      - fr-GQ            # French (Equatorial Guinea)
+      - fr-HT            # French (Haiti)
+      - fr-KM            # French (Comoros)
+      - fr-LU            # French (Luxembourg)
+      - fr-MA            # French (Morocco)
+      - fr-MC            # French (Monaco)
+      - fr-MF            # French (St. Martin)
+      - fr-MG            # French (Madagascar)
+      - fr-ML            # French (Mali)
+      - fr-MQ            # French (Martinique)
+      - fr-MR            # French (Mauritania)
+      - fr-MU            # French (Mauritius)
+      - fr-NC            # French (New Caledonia)
+      - fr-NE            # French (Niger)
+      - fr-PF            # French (French Polynesia)
+      - fr-PM            # French (St. Pierre & Miquelon)
+      - fr-RE            # French (Réunion)
+      - fr-RW            # French (Rwanda)
+      - fr-SC            # French (Seychelles)
+      - fr-SN            # French (Senegal)
+      - fr-SY            # French (Syria)
+      - fr-TD            # French (Chad)
+      - fr-TG            # French (Togo)
+      - fr-TN            # French (Tunisia)
+      - fr-VU            # French (Vanuatu)
+      - fr-WF            # French (Wallis & Futuna)
+      - fr-YT            # French (Mayotte)
+      
+  - Name: de
+    DisplayName: German
+    NativeName: Deutsch
+    DefaultCultureCode: de-DE
+    SteamName: german
+    Aliases:
+      - de
+      - de-de
+    SupportedCultures:
+      - de               # German
+      - de-AT            # German (Austria)
+      - de-BE            # German (Belgium)
+      - de-CH            # German (Switzerland)
+      - de-DE            # German (Germany)
+      - de-IT            # German (Italy)
+      - de-LI            # German (Liechtenstein)
+      - de-LU            # German (Luxembourg)
+       
+  - Name: el
+    DisplayName: Greek
+    NativeName: Ελληνικά
+    DefaultCultureCode: el-GR
+    SteamName: greek
+    Aliases:
+      - el
+      - el-gr
+      - el-cy
+    SupportedCultures:
+      - el               # Greek
+      - el-CY            # Greek (Cyprus)
+      - el-GR            # Greek (Greece)
+  
+  - Name: hu
+    DisplayName: Hungarian
+    NativeName: Magyar
+    DefaultCultureCode: hu-HU
+    SteamName: hungarian
+    Aliases:
+      - hu
+      - hu-hu
+    SupportedCultures:
+      - hu               # Hungarian
+      - hu-HU            # Hungarian (Hungary)
+      
+  - Name: id
+    DisplayName: Indonesian
+    NativeName: Bahasa Indonesia
+    DefaultCultureCode: id-ID
+    SteamName: indonesian
+    Aliases:
+      - id
+      - id-id
+    SupportedCultures:
+      - id               # Indonesian
+      - id-ID            # Indonesian (Indonesia)
+      
+  - Name: it
+    DisplayName: Italian
+    NativeName: Italiano
+    DefaultCultureCode: it-IT
+    SteamName: italian
+    Aliases:
+      - it
+      - it-it
+    SupportedCultures:
+      - it               # Italian
+      - it-CH            # Italian (Switzerland)
+      - it-IT            # Italian (Italy)
+      - it-SM            # Italian (San Marino)
+      - it-VA            # Italian (Vatican City)
+      
+  - Name: ja
+    DisplayName: Japanese
+    NativeName: 日本語
+    DefaultCultureCode: ja-JP
+    SteamName: japanese
+    Aliases:
+      - ja
+      - ja-jp
+    SupportedCultures:
+      - ja               # Japanese
+      - ja-JP            # Japanese (Japan)
+      
+  - Name: ko
+    DisplayName: Korean
+    NativeName: 한국어
+    DefaultCultureCode: ko-KR
+    SteamName: koreana
+    Aliases:
+      - ko
+      - ko-kp
+      - ko-kr
+    SupportedCultures:
+      - ko               # Korean
+      - ko-KP            # Korean (North Korea)
+      - ko-KR            # Korean (Korea)
+      
+    # without quotes 'no' is formatted as a boolean in yaml
+  - Name: "no"
+    DisplayName: Norwegian
+    NativeName: Norsk
+    DefaultCultureCode: "no"
+    SteamName: norwegian
+    Aliases:
+      - "no"
+      - no-no
+      - no-nw
+    SupportedCultures:
+      - "no"             # Norwegian
+      
+  - Name: pl
+    DisplayName: Polish
+    NativeName: Polski
+    DefaultCultureCode: pl-PL
+    SteamName: polish
+    Aliases:
+      - pl
+      - pl-pl
+    SupportedCultures:
+      - pl               # Polish
+      - pl-PL            # Polish (Poland)
+      
+  - Name: pt
+    DisplayName: Portuguese
+    NativeName: Português
+    DefaultCultureCode: pt-PT
+    SteamName: portuguese
+    FallbackTranslationLanguageName: pt(br)
+    Aliases:
+      - pt
+      - pt-pt
+    SupportedCultures:
+      - pt               # Portuguese
+      - pt-AO            # Portuguese (Angola)
+      - pt-BR            # Portuguese (Brazil)
+      - pt-CH            # Portuguese (Switzerland)
+      - pt-CV            # Portuguese (Cabo Verde)
+      - pt-GQ            # Portuguese (Equatorial Guinea)
+      - pt-GW            # Portuguese (Guinea-Bissau)
+      - pt-LU            # Portuguese (Luxembourg)
+      - pt-MO            # Portuguese (Macao SAR)
+      - pt-MZ            # Portuguese (Mozambique)
+      - pt-PT            # Portuguese (Portugal)
+      - pt-ST            # Portuguese (São Tomé & Príncipe)
+      - pt-TL            # Portuguese (Timor-Leste)
+      
+  - Name: pt(br)
+    DisplayName: Portuguese (Brazil)
+    NativeName: Português-Brasil
+    DefaultCultureCode: pt-BR
+    SteamName: brazilian
+    FallbackTranslationLanguageName: pt
+    Aliases:
+      - brazilian
+      - brazillian
+      - pt-br
+    SupportedCultures:
+      - pt               # Portuguese
+      - pt-AO            # Portuguese (Angola)
+      - pt-BR            # Portuguese (Brazil)
+      - pt-CH            # Portuguese (Switzerland)
+      - pt-CV            # Portuguese (Cabo Verde)
+      - pt-GQ            # Portuguese (Equatorial Guinea)
+      - pt-GW            # Portuguese (Guinea-Bissau)
+      - pt-LU            # Portuguese (Luxembourg)
+      - pt-MO            # Portuguese (Macao SAR)
+      - pt-MZ            # Portuguese (Mozambique)
+      - pt-PT            # Portuguese (Portugal)
+      - pt-ST            # Portuguese (São Tomé & Príncipe)
+      - pt-TL            # Portuguese (Timor-Leste)
+      
+  - Name: ro
+    DisplayName: Romanian
+    NativeName: Română
+    DefaultCultureCode: ro-RO
+    SteamName: romanian
+    Aliases:
+      - ro
+      - ro-ro
+    SupportedCultures:
+      - ro               # Romanian
+      - ro-MD            # Romanian (Moldova)
+      - ro-RO            # Romanian (Romania)
+      
+  - Name: ru
+    DisplayName: Russian
+    NativeName: Русский
+    DefaultCultureCode: ru-RU
+    FallbackTranslationLanguageName: uk
+    SteamName: russian
+    Aliases:
+      - ru
+      - ru-ru
+      - ru-ua
+    SupportedCultures:
+      - ru               # Russian
+      - ru-BY            # Russian (Belarus)
+      - ru-KG            # Russian (Kyrgyzstan)
+      - ru-KZ            # Russian (Kazakhstan)
+      - ru-MD            # Russian (Moldova)
+      - ru-RU            # Russian (Russia)
+      - ru-UA            # Russian (Ukraine)
+      
+  - Name: es
+    DisplayName: Spanish (Spain)
+    NativeName: Español
+    DefaultCultureCode: es-ES
+    FallbackTranslationLanguageName: es(latam)
+    SteamName: spanish
+    Aliases:
+      - es
+      - es-es
+    SupportedCultures:
+      - es               # Spanish
+      - es-ES            # Spanish (Spain)
+      - es-GQ            # Spanish (Equatorial Guinea)
+      - es-PH            # Spanish (Philippines)
+      - es-419           # Spanish (Latin America)
+      - es-AR            # Spanish (Argentina)
+      - es-BO            # Spanish (Bolivia)
+      - es-BR            # Spanish (Brazil)
+      - es-BZ            # Spanish (Belize)
+      - es-CL            # Spanish (Chile)
+      - es-CO            # Spanish (Colombia)
+      - es-CR            # Spanish (Costa Rica)
+      - es-CU            # Spanish (Cuba)
+      - es-DO            # Spanish (Dominican Republic)
+      - es-EC            # Spanish (Ecuador)
+      - es-GT            # Spanish (Guatemala)
+      - es-HN            # Spanish (Honduras)
+      - es-MX            # Spanish (Mexico)
+      - es-NI            # Spanish (Nicaragua)
+      - es-PA            # Spanish (Panama)
+      - es-PE            # Spanish (Peru)
+      - es-PR            # Spanish (Puerto Rico)
+      - es-PY            # Spanish (Paraguay)
+      - es-SV            # Spanish (El Salvador)
+      - es-US            # Spanish (United States)
+      - es-UY            # Spanish (Uruguay)
+      - es-VE            # Spanish (Venezuela)
+      
+  - Name: es(latam)
+    DisplayName: Spanish (Latin America)
+    NativeName: Español
+    DefaultCultureCode: es-419
+    SteamName: latam
+    FallbackTranslationLanguageName: es
+    Aliases:
+      - es-latam
+      - es-419
+      - es-mx
+    SupportedCultures:
+      - es               # Spanish
+      - es-419           # Spanish (Latin America)
+      - es-AR            # Spanish (Argentina)
+      - es-BO            # Spanish (Bolivia)
+      - es-BR            # Spanish (Brazil)
+      - es-BZ            # Spanish (Belize)
+      - es-CL            # Spanish (Chile)
+      - es-CO            # Spanish (Colombia)
+      - es-CR            # Spanish (Costa Rica)
+      - es-CU            # Spanish (Cuba)
+      - es-DO            # Spanish (Dominican Republic)
+      - es-EC            # Spanish (Ecuador)
+      - es-GT            # Spanish (Guatemala)
+      - es-HN            # Spanish (Honduras)
+      - es-MX            # Spanish (Mexico)
+      - es-NI            # Spanish (Nicaragua)
+      - es-PA            # Spanish (Panama)
+      - es-PE            # Spanish (Peru)
+      - es-PH            # Spanish (Philippines)
+      - es-PR            # Spanish (Puerto Rico)
+      - es-PY            # Spanish (Paraguay)
+      - es-SV            # Spanish (El Salvador)
+      - es-US            # Spanish (United States)
+      - es-UY            # Spanish (Uruguay)
+      - es-VE            # Spanish (Venezuela)
+      - es-GQ            # Spanish (Equatorial Guinea)
+      - es-ES            # Spanish (Spain)
+  
+  - Name: sv
+    DisplayName: Swedish
+    NativeName: Svenska
+    DefaultCultureCode: sv-SE
+    SteamName: swedish
+    Aliases:
+      - sv
+      - sv-se
+      - sv-fi
+    SupportedCultures:
+      - sv               # Swedish
+      - sv-AX            # Swedish (Åland Islands)
+      - sv-FI            # Swedish (Finland)
+      - sv-SE            # Swedish (Sweden)
+  
+  - Name: th
+    DisplayName: Thai
+    NativeName: ไทย
+    DefaultCultureCode: th-TH
+    SteamName: thai
+    Aliases:
+      - th
+      - th-TH
+    SupportedCultures:
+      - th               # Thai
+      - th-TH            # Thai (Thailand)
+  
+  - Name: tr
+    DisplayName: Turkish
+    NativeName: Türkçe
+    DefaultCultureCode: tr-TR
+    SteamName: turkish
+    Aliases:
+      - tr
+      - tr-tr
+    SupportedCultures:
+      - tr               # Turkish
+      - tr-CY            # Turkish (Cyprus)
+      - tr-TR            # Turkish (Türkiye)
+  
+  - Name: uk
+    DisplayName: Ukrainian
+    NativeName: Українська
+    DefaultCultureCode: uk-UA
+    FallbackTranslationLanguageName: ru
+    SteamName: ukrainian
+    Aliases:
+      - uk
+      - uk-ua
+    SupportedCultures:
+      - uk               # Ukrainian
+      - uk-UA            # Ukrainian (Ukraine)
+  
+  - Name: vi
+    DisplayName: Vietnamese
+    NativeName: Tiếng Việt
+    DefaultCultureCode: vi-VN
+    SteamName: vietnamese
+    Aliases:
+      - vi
+      - vi-vn
+      - vn
+      - vn-vn
+    SupportedCultures:
+      - vi               # Vietnamese
+      - vi-VN            # Vietnamese (Vietnam)
