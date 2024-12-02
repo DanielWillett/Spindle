@@ -4,6 +4,7 @@ using HarmonyLib;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 using SDG.Framework.Modules;
+using Spindle.Interaction.Commands;
 using Spindle.Localization;
 using Spindle.Logging;
 using Spindle.Players;
@@ -14,7 +15,6 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.IO;
 using System.Reflection;
-using Spindle.Interaction.Commands;
 
 namespace Spindle;
 
@@ -31,6 +31,7 @@ public sealed class SpindleLauncher
     private static IConfigurationRoot _spindleConfiguration;
     private static ServiceContainer _serviceProvider;
     private static CancellationTokenSource _tokenSource;
+    internal static SpindleLoggerProvider LoggerProvider;
     private static bool _isStartupLoaded;
 
 #nullable restore
@@ -154,7 +155,8 @@ public sealed class SpindleLauncher
     {
         await UniTask.SwitchToMainThread(token);
 
-        LoggerFactory = new SpindleLoggerFactory(new SpindleLoggerProvider(), _spindleConfiguration.GetSection("Logging"));
+        LoggerProvider = new SpindleLoggerProvider();
+        LoggerFactory = new SpindleLoggerFactory(LoggerProvider, _spindleConfiguration.GetSection("Logging"));
         _logger = LoggerFactory.CreateLogger<SpindleLauncher>();
 
         SpindleParentServiceProvider spindleParentProvider = new SpindleParentServiceProvider();
@@ -209,6 +211,7 @@ public sealed class SpindleLauncher
         CheckUnchangeableService(collection, PluginLoader);
         CheckUnchangeableService(collection, SpindleDirectoryFileProvider);
         CheckUnchangeableService<IFileProvider>(collection, SpindleDirectoryFileProvider);
+        CheckUnchangeableService<IModuleNexus>(collection, Nexus.Instance);
         
         await PluginLoader.RunPluginsAsync(ServiceProvider, token);
         await UniTask.SwitchToMainThread(token);
@@ -287,7 +290,7 @@ public sealed class SpindleLauncher
     private void ConfigureServices(IServiceContainer collection)
     {
         collection.AddService(typeof(SpindleLauncher), this);
-        collection.AddService(typeof(IModuleNexus), this);
+        collection.AddService(typeof(IModuleNexus), Nexus.Instance);
 
         collection.AddService(typeof(IFileProvider), SpindleDirectoryFileProvider);
         collection.AddService(typeof(PhysicalFileProvider), SpindleDirectoryFileProvider);
@@ -517,8 +520,10 @@ public sealed class SpindleLauncher
     [UsedImplicitly]
     private class Nexus : IModuleNexus
     {
-        private object? _launcher;
-
+#nullable disable
+        private object _launcher;
+        public static Nexus Instance;
+#nullable restore
         private static object Initialize()
         {
             SpindleLauncher nexus = new SpindleLauncher();
@@ -537,6 +542,7 @@ public sealed class SpindleLauncher
 
         void IModuleNexus.initialize()
         {
+            Instance = this;
             try
             {
                 _launcher = Initialize();
