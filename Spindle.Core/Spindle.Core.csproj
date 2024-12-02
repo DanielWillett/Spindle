@@ -80,10 +80,6 @@
 
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Localization\Addons\" />
-  </ItemGroup>
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="XCOPY /v /y &quot;A:\repos\SpindleLauncher\Spindle.Core\bin\Debug\netstandard2.1\Spindle.Core.dll*&quot; &quot;C:\SteamCMD\steamapps\common\U3DS\Modules\Spindle\Bin\Spindle.Core.dll*&quot;" />
   </Target>

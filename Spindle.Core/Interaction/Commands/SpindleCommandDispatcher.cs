@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Spindle.Interaction.Commands;
 
 [EditorBrowsable(EditorBrowsableState.Advanced)]
-public class SpindleCommandDispatcher : ICommandDispatcher
+public class SpindleCommandDispatcher : ICommandDispatcher, ISubCommandContainer
 {
     private readonly ICommandParser _commandParser;
     private readonly ILogger<SpindleCommandDispatcher> _logger;
@@ -24,20 +24,58 @@ public class SpindleCommandDispatcher : ICommandDispatcher
         _parentCommands = new List<ICommandRegistration>();
     }
 
-    public ICommandRegistration? FindParentCommand(string commandName)
+    public ICommandRegistration? FindParentCommand(string commandName, bool caseSensitive = true)
     {
-        for (int i = 0; i < _parentCommands.Count; ++i)
+        StringComparison comparison = caseSensitive
+            ? StringComparison.InvariantCultureIgnoreCase
+            : StringComparison.InvariantCulture;
+
+        ICommandRegistration? highestPriorityAliasMatch = null;
+        int highestPriorityAliasMatchPriority = 0;
+        foreach (ICommandRegistration cmd in _parentCommands)
         {
-            ICommandRegistration cmd = _parentCommands[i];
-
-            if (commandName.Equals(cmd.Name, StringComparison.InvariantCultureIgnoreCase))
-                return cmd;
-
-            for (int j = 0; j < _parentCommands.Count; ++j)
+            if (commandName.Equals(cmd.Name, comparison))
             {
-                
+                if (highestPriorityAliasMatchPriority > cmd.Priority && highestPriorityAliasMatch != null)
+                    return highestPriorityAliasMatch;
+                return cmd;
             }
+
+            if (highestPriorityAliasMatch != null && highestPriorityAliasMatchPriority > cmd.Priority)
+                continue;
+
+            bool found = false;
+            if (cmd.Aliases is string[] arr)
+            {
+                foreach (string str in arr)
+                {
+                    if (!commandName.Equals(str, comparison))
+                        continue;
+
+                    found = true;
+                    break;
+                }
+            }
+            else
+            {
+                foreach (string str in cmd.Aliases)
+                {
+                    if (!commandName.Equals(str, comparison))
+                        continue;
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+                continue;
+
+            highestPriorityAliasMatchPriority = cmd.Priority;
+            highestPriorityAliasMatch = cmd;
         }
+
+        return highestPriorityAliasMatch;
     }
 
     public UniTask<bool> TryExecuteCommandAsync(IInteractionUser user, string command, bool requirePrefix, [MaybeNullWhen(false)] out ICommandRegistration foundCommand, CancellationToken token = default)
