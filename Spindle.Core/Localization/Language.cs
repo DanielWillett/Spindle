@@ -34,13 +34,13 @@ public class Language
     [JsonPropertyName("name")]
     public string Name
     {
-        get;
+        get => field;
         set
         {
             field = value;
             _fileName = null;
         }
-    } = null!;
+    }
 
     /// <summary>
     /// Displayed name for this language.
@@ -78,7 +78,7 @@ public class Language
     [JsonPropertyName("steam_name")]
     public string? SteamName
     {
-        get;
+        get => field;
         set
         {
             field = value;

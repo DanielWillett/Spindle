@@ -1,10 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Spindle.Unturned;
-public class UnturnedAssets
+
+/// <summary>
+/// Abstraction around the vanilla <see cref="Assets"/> class.
+/// </summary>
+public static class UnturnedAssets
 {
+    private static List<Asset> _loadedAssetsCache;
+
+    public static IReadOnlyList<Asset> AllAssets
+    {
+        get
+        {
+            // todo
+            return Array.Empty<Asset>();
+        }
+    }
+
     /// <summary>
     /// Returns the asset category (<see cref="EAssetType"/>) of <typeparamref name="TAsset"/>. Efficiently cached.
     /// </summary>

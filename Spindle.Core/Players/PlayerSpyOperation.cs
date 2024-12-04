@@ -8,7 +8,7 @@ using System.IO;
 namespace Spindle.Players;
 
 /// <summary>
-/// Request a screenshot using <see cref="RequestScreenshot"/>.
+/// Request a screenshot using <see cref="SpindlePlayer.RequestScreenshot(CancellationToken,TimeSpan,bool)"/>.
 /// </summary>
 public sealed class PlayerSpyOperation
 {

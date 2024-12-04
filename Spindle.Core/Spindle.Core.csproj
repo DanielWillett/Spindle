@@ -14,8 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Defaults\Languages.yml" />
-    <None Remove="Defaults\Spindle Configuration.yml" />
+    <None Remove="Defaults\**" />
+    <None Include="$(SolutionDir)docs/**" Link="docs/%(RecursiveDir)%(FileName)$(Extension)" CopyToOutputDirectory="Never"/>
   </ItemGroup>
 
   <ItemGroup>

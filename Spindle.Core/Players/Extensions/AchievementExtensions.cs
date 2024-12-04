@@ -7,12 +7,13 @@ namespace Spindle.Players;
 public partial struct SpindlePlayer
 {
     /// <summary>
-    /// Tell the player to increment their value for a certain <paramref name="stat"/> by 1.
+    /// Tell the player to trigger an achievement unlock on Steam if they don't already have it.
     /// </summary>
     /// <remarks>Most achievement IDs can be found in <see cref="KnownAchievementIds"/>.</remarks>
     /// <exception cref="GameThreadException"/>
     /// <exception cref="PlayerOfflineException"/>
     /// <exception cref="ArgumentNullException"/>
+    /// <exception cref="ArgumentException">Achievement ID is empty.</exception>
     public readonly void SendUnlockAchievement([ValueProvider("Spindle.Unturned.KnownAchievementIds")] string achievementId)
     {
         if (achievementId == null)

@@ -6,8 +6,9 @@ namespace Spindle.Players;
 /// <summary>
 /// Thrown when a player is not online.
 /// </summary>
+/// <remarks>Subclass of <see cref="InvalidOperationException"/>.</remarks>
 [Serializable]
-public class PlayerOfflineException : Exception
+public class PlayerOfflineException : InvalidOperationException
 {
     public CSteamID Player { get; }
     public PlayerOfflineException(CSteamID player) : this(player, Properties.Resources.ExceptionPlayerOffline) { }
