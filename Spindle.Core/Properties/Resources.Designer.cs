@@ -250,6 +250,15 @@ namespace Spindle.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player component {0} did not assign the Player property to the expected player..
+        /// </summary>
+        internal static string LogPlayerComponentFailedToAssignPlayerProperty {
+            get {
+                return ResourceManager.GetString("LogPlayerComponentFailedToAssignPlayerProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Constructor for player component {0} threw an exception for player {1}..
         /// </summary>
         internal static string LogPlayerComponentFailedToCreate {

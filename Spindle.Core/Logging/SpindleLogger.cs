@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace Spindle.Logging;
 
-internal class SpindleLogger : ILogger
+internal class SpindleLogger : ILogger, Microsoft.Extensions.Logging.ILogger
 {
     private static readonly string[] LogLevelsRaw = [ "TRC", "DBG", "INF", "WRN", "ERR", "CRT" ];
     private static readonly string[] LogLevelsANSI = [ "\e[47mTRC\e[49m", "\e[47mDBG\e[49m", "\e[46mINF\e[49m", "\e[43mWRN\e[49m", "\e[41mERR\e[49m", "\e[101mCRT\e[49m" ];

@@ -260,7 +260,7 @@ public partial struct SpindlePlayer :
     }
 
     /// <summary>
-    /// Creates a <see cref="SpindlePlayer"/> from a <see cref="SDG.Unturned.Player"/>.
+    /// Creates a <see cref="SpindlePlayer"/> from a <see cref="Player"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static SpindlePlayer Create(Player player)
@@ -272,7 +272,7 @@ public partial struct SpindlePlayer :
     }
 
     /// <summary>
-    /// Creates a <see cref="SpindlePlayer"/> from a <see cref="SDG.Unturned.Player"/>.
+    /// Creates a <see cref="SpindlePlayer"/> from a <see cref="Player"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static SpindlePlayer Create(PlayerCaller player)

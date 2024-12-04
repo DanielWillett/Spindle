@@ -1,5 +1,6 @@
 ﻿using DanielWillett.ReflectionTools;
 using Microsoft.Extensions.DependencyInjection;
+using Spindle.Logging;
 using Spindle.Threading;
 using Spindle.Util;
 using System;
@@ -106,15 +107,17 @@ internal class SpindlePlayerComponent : MonoBehaviour
     {
         SpindlePlayer player = SpindlePlayer.Create(_player!);
 
-        IServiceProvider serviceProvider = SpindleLauncher.ServiceProvider;
-
         IPlayerComponent[] components = Components.Values;
         for (int i = 0; i < components.Length; ++i)
         {
             IPlayerComponent component = components[i];
             try
             {
-                component.Initialize(player, serviceProvider);
+                component.Initialize(player);
+                if (component.Player != player)
+                {
+                    _logger!.LogWarning(Properties.Resources.LogPlayerComponentFailedToAssignPlayerProperty, Accessor.Formatter.Format(component.GetType()));
+                }
             }
             catch (Exception ex)
             {
@@ -153,7 +156,7 @@ internal class SpindlePlayerComponent : MonoBehaviour
                 }
                 else
                 {
-                    component = (IPlayerComponent)ActivatorUtilities.CreateInstance(serviceProvider, t, Array.Empty<object>());
+                    component = (IPlayerComponent)ActivatorUtilities.CreateInstance(serviceProvider, t);
                 }
             }
             catch (Exception ex)

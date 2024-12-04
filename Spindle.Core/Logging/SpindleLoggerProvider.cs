@@ -169,7 +169,7 @@ public class SpindleLoggerProvider : ILoggerProvider
 
     Microsoft.Extensions.Logging.ILogger Microsoft.Extensions.Logging.ILoggerProvider.CreateLogger(string categoryName)
     {
-        return CreateLogger(categoryName);
+        return (Microsoft.Extensions.Logging.ILogger)CreateLogger(categoryName);
     }
 
     void IDisposable.Dispose()

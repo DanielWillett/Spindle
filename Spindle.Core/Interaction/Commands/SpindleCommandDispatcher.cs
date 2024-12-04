@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spindle.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;

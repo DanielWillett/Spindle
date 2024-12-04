@@ -41,7 +41,7 @@ public class SpindleLoggerFactory : ILoggerFactory
         {
             foreach (KeyValuePair<string, LoggerWrapper> logger in _loggers)
             {
-                ILogger oldLogger = Interlocked.Exchange(ref logger.Value.ActualLogger, CreateLoggerIntl(logger.Key));
+                ILoggerMs oldLogger = Interlocked.Exchange(ref logger.Value.ActualLogger, CreateLoggerIntl(logger.Key));
                 if (oldLogger is IDisposable loggerDisp)
                     loggerDisp.Dispose();
             }
@@ -68,18 +68,10 @@ public class SpindleLoggerFactory : ILoggerFactory
         ((ILoggerFactoryMs)this).AddProvider(provider);
     }
 
-    private ILogger CreateLoggerIntl(string categoryName)
+    private ILoggerMs CreateLoggerIntl(string categoryName)
     {
         ILoggerMs logger = _loggerProvider.CreateLogger(categoryName);
-        if (logger is not ILogger spindleLogger)
-        {
-            if (logger is IDisposable disp)
-                disp.Dispose();
-
-            throw new InvalidOperationException("Logger providers must return loggers that implement Spindle.Logging.ILogger.");
-        }
-
-        return spindleLogger;
+        return logger;
     }
 
     public ILogger CreateLogger(string categoryName)
@@ -141,7 +133,7 @@ public class SpindleLoggerFactory : ILoggerFactory
 
             foreach (KeyValuePair<string, LoggerWrapper> logger in _loggers)
             {
-                ILogger oldLogger = Interlocked.Exchange(ref logger.Value.ActualLogger, CreateLoggerIntl(logger.Key));
+                ILoggerMs oldLogger = Interlocked.Exchange(ref logger.Value.ActualLogger, CreateLoggerIntl(logger.Key));
                 if (oldLogger is IDisposable loggerDisp)
                     loggerDisp.Dispose();
             }
@@ -267,7 +259,7 @@ public class SpindleLoggerFactory : ILoggerFactory
 
             foreach (LoggerWrapper logger in _loggers.Values)
             {
-                ILogger oldLogger = Interlocked.Exchange(ref logger.ActualLogger, NullLogger.Instance);
+                ILoggerMs oldLogger = Interlocked.Exchange(ref logger.ActualLogger, NullLogger.Instance);
                 if (oldLogger is IDisposable loggerDisp)
                     loggerDisp.Dispose();
             }
@@ -277,9 +269,9 @@ public class SpindleLoggerFactory : ILoggerFactory
             disp.Dispose();
     }
 
-    ILoggerMs ILoggerFactoryMs.CreateLogger(string categoryName) => CreateLogger(categoryName);
+    ILoggerMs ILoggerFactoryMs.CreateLogger(string categoryName) => (ILoggerMs)CreateLogger(categoryName);
 
-    private sealed class NullLogger : ILogger
+    private sealed class NullLogger : ILogger, ILoggerMs
     {
         public static readonly NullLogger Instance = new NullLogger();
         private NullLogger() { }
@@ -295,11 +287,11 @@ public class SpindleLoggerFactory : ILoggerFactory
         public void Dispose() { }
     }
 
-    private sealed class LoggerWrapper<T> : LoggerWrapper, ILogger<T>;
-    private class LoggerWrapper : ILogger
+    private sealed class LoggerWrapper<T> : LoggerWrapper, ILogger<T>, Microsoft.Extensions.Logging.ILogger<T>;
+    private class LoggerWrapper : ILogger, ILoggerMs
     {
 #nullable disable
-        public ILogger ActualLogger;
+        public ILoggerMs ActualLogger;
         public LogLevel MinimumLevel;
 #nullable restore
 

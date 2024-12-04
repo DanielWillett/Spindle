@@ -55,7 +55,7 @@
 
   <ItemGroup>
 
-    <Using Include="Spindle.ILogger">
+    <Using Include="Spindle.Logging.ILogger">
       <Alias>ILogger</Alias>
     </Using>
 

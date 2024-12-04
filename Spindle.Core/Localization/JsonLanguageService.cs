@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Primitives;
+using Spindle.Logging;
 using Spindle.Util;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Spindle.Logging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

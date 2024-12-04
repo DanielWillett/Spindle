@@ -231,4 +231,7 @@
   <data name="ExceptionEmptyString" xml:space="preserve">
     <value>Parameter must be a non-empty string.</value>
   </data>
+  <data name="LogPlayerComponentFailedToAssignPlayerProperty" xml:space="preserve">
+    <value>Player component {0} did not assign the Player property to the expected player.</value>
+  </data>
 </root>
