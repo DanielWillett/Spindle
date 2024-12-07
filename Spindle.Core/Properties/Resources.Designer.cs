@@ -61,6 +61,15 @@ namespace Spindle.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This player is not currently arrested..
+        /// </summary>
+        internal static string EndArrestPlayerNotArrested {
+            get {
+                return ResourceManager.GetString("EndArrestPlayerNotArrested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to URL scheme must be http or https..
         /// </summary>
         internal static string ExceptionBrowserRequestNotHttp {
@@ -282,6 +291,51 @@ namespace Spindle.Properties {
         internal static string LogPlayerComponentFailedToInitialize {
             get {
                 return ResourceManager.GetString("LogPlayerComponentFailedToInitialize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Had to fallback during UnturnedAssets initialization: failed to find field {0}..
+        /// </summary>
+        internal static string LogUnturnedAssetsFieldNotFound {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsFieldNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Had to fallback during UnturnedAssets initialization..
+        /// </summary>
+        internal static string LogUnturnedAssetsGenericError {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsGenericError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Had to fallback during UnturnedAssets initialization: failed to find type {0}..
+        /// </summary>
+        internal static string LogUnturnedAssetsTypeNotFound {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsTypeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create getter for field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync..
+        /// </summary>
+        internal static string LogUnturnedAssetsVersionFieldFailed {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsVersionFieldFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to find field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync..
+        /// </summary>
+        internal static string LogUnturnedAssetsVersionFieldNotFound {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsVersionFieldNotFound", resourceCulture);
             }
         }
         

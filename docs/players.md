@@ -73,8 +73,8 @@ public sealed class PlayerUnityComponent : MonoBehaviour, IPlayerComponent
 ---
 
 Usage:
-```
-SpindlePlayer player = SpindlePlayer.Create;
+```cs
+SpindlePlayer player = SpindlePlayer.Create(/* ... */);
 
 // SpindlePlayer.Component uses static generic types for very effecient type lookup.
 // An error would be thrown if the component isn't found

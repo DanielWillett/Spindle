@@ -234,4 +234,22 @@
   <data name="LogPlayerComponentFailedToAssignPlayerProperty" xml:space="preserve">
     <value>Player component {0} did not assign the Player property to the expected player.</value>
   </data>
+  <data name="EndArrestPlayerNotArrested" xml:space="preserve">
+    <value>This player is not currently arrested.</value>
+  </data>
+  <data name="LogUnturnedAssetsFieldNotFound" xml:space="preserve">
+    <value>Had to fallback during UnturnedAssets initialization: failed to find field {0}.</value>
+  </data>
+  <data name="LogUnturnedAssetsTypeNotFound" xml:space="preserve">
+    <value>Had to fallback during UnturnedAssets initialization: failed to find type {0}.</value>
+  </data>
+  <data name="LogUnturnedAssetsGenericError" xml:space="preserve">
+    <value>Had to fallback during UnturnedAssets initialization.</value>
+  </data>
+  <data name="LogUnturnedAssetsVersionFieldNotFound" xml:space="preserve">
+    <value>Failed to find field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync.</value>
+  </data>
+  <data name="LogUnturnedAssetsVersionFieldFailed" xml:space="preserve">
+    <value>Failed to create getter for field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync.</value>
+  </data>
 </root>
