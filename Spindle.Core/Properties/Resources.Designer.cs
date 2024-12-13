@@ -133,6 +133,15 @@ namespace Spindle.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unexpected underlying type for enum type {0}..
+        /// </summary>
+        internal static string ExceptionInvalidEnumType {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidEnumType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Input string either has extra formatting arguments or is using an inforrect format string syntax..
         /// </summary>
         internal static string ExceptionInvalidFormat {

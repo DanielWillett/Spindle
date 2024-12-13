@@ -1,4 +1,4 @@
-﻿using DanielWillett.ReflectionTools.Emit;
+using DanielWillett.ReflectionTools.Emit;
 using DanielWillett.ReflectionTools.Formatting;
 using Spindle.Logging;
 using Spindle.Util;
@@ -55,7 +55,12 @@ public static class UnturnedAssets
         [Pure]
         public Asset? Get(ushort id)
         {
-            return UnturnedAssets.Get(EAssetType.ITEM, id);
+            if (id == 0)
+                return null;
+
+            EnsureInitialized();
+            _legacyTypeDictionaries![Index].TryGetValue(id, out Asset? asset);
+            return ResolveRedirectAsset(asset);
         }
 
         /// <summary>

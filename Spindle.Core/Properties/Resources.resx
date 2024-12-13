@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -251,5 +251,8 @@
   </data>
   <data name="LogUnturnedAssetsVersionFieldFailed" xml:space="preserve">
     <value>Failed to create getter for field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync.</value>
+  </data>
+  <data name="ExceptionInvalidEnumType" xml:space="preserve">
+    <value>Unexpected underlying type for enum type {0}.</value>
   </data>
 </root>

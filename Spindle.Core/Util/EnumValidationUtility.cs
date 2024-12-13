@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using DanielWillett.ReflectionTools;
 
 namespace Spindle.Util;
 internal static class EnumValidationUtility
@@ -148,30 +149,18 @@ internal static class EnumValidationUtility
             return Unsafe.As<nuint, TEnum>(ref max);
         }
 
-        if (typeof(TEnum).GetEnumUnderlyingType() == typeof(float))
+        // char and bool are allowed for enums, just not in C#
+        if (typeof(TEnum).GetEnumUnderlyingType() == typeof(char))
         {
-            float max = Unsafe.As<TEnum, float>(ref values[0]);
+            char max = Unsafe.As<TEnum, char>(ref values[0]);
             for (int i = 1; i < values.Length; ++i)
             {
-                float v = Unsafe.As<TEnum, float>(ref values[i]);
+                char v = Unsafe.As<TEnum, char>(ref values[i]);
                 if (v > max)
                     max = v;
             }
 
-            return Unsafe.As<float, TEnum>(ref max);
-        }
-
-        if (typeof(TEnum).GetEnumUnderlyingType() == typeof(double))
-        {
-            double max = Unsafe.As<TEnum, double>(ref values[0]);
-            for (int i = 1; i < values.Length; ++i)
-            {
-                double v = Unsafe.As<TEnum, double>(ref values[i]);
-                if (v > max)
-                    max = v;
-            }
-
-            return Unsafe.As<double, TEnum>(ref max);
+            return Unsafe.As<char, TEnum>(ref max);
         }
 
         if (typeof(TEnum).GetEnumUnderlyingType() == typeof(bool))
@@ -190,7 +179,7 @@ internal static class EnumValidationUtility
             return Unsafe.As<bool, TEnum>(ref max);
         }
 
-        return default;
+        throw new InvalidOperationException(string.Format(Properties.Resources.ExceptionInvalidEnumType, Accessor.ExceptionFormatter.Format(typeof(TEnum))));
     }
 
     /// <summary>
@@ -333,30 +322,18 @@ internal static class EnumValidationUtility
             return Unsafe.As<nuint, TEnum>(ref min);
         }
 
-        if (typeof(TEnum).GetEnumUnderlyingType() == typeof(float))
+        // char and bool are allowed for enums, just not in C#
+        if (typeof(TEnum).GetEnumUnderlyingType() == typeof(char))
         {
-            float min = Unsafe.As<TEnum, float>(ref values[0]);
+            char min = Unsafe.As<TEnum, char>(ref values[0]);
             for (int i = 1; i < values.Length; ++i)
             {
-                float v = Unsafe.As<TEnum, float>(ref values[i]);
+                char v = Unsafe.As<TEnum, char>(ref values[i]);
                 if (v < min)
                     min = v;
             }
 
-            return Unsafe.As<float, TEnum>(ref min);
-        }
-
-        if (typeof(TEnum).GetEnumUnderlyingType() == typeof(double))
-        {
-            double min = Unsafe.As<TEnum, double>(ref values[0]);
-            for (int i = 1; i < values.Length; ++i)
-            {
-                double v = Unsafe.As<TEnum, double>(ref values[i]);
-                if (v < min)
-                    min = v;
-            }
-
-            return Unsafe.As<double, TEnum>(ref min);
+            return Unsafe.As<char, TEnum>(ref min);
         }
 
         if (typeof(TEnum).GetEnumUnderlyingType() == typeof(bool))
@@ -375,6 +352,6 @@ internal static class EnumValidationUtility
             return Unsafe.As<bool, TEnum>(ref min);
         }
 
-        return default;
+        throw new InvalidOperationException(string.Format(Properties.Resources.ExceptionInvalidEnumType, Accessor.ExceptionFormatter.Format(typeof(TEnum))));
     }
 }
