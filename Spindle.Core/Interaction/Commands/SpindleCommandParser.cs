@@ -143,7 +143,7 @@ public class SpindleCommandParser : ICommandParser
                 while (firstNonFlag < args.Length && flagPrefixes[flagPrefix] == args[firstNonFlag])
                     ++firstNonFlag;
 
-                if (firstNonFlag is 1 or 2)
+                if (firstNonFlag is 1 or 2 && firstNonFlag < args.Length && !char.IsDigit(args[firstNonFlag]) && args[firstNonFlag] != '.' && args[firstNonFlag] != ',')
                 {
                     args = args[firstNonFlag..];
                     ReadOnlySpan<char> span = GetNextArg(ref args, startArgChars, endArgChars, flagPrefixes, out isEmpty, out flagDashCt);
