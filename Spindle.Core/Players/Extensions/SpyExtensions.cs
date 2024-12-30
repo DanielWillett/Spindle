@@ -12,7 +12,7 @@ public partial struct SpindlePlayer
     /// <returns>An awaitable task that completes when the screenshot is taken.</returns>
     /// <exception cref="GameThreadException"/>
     /// <exception cref="PlayerOfflineException"/>
-    public SpyTask RequestScreenshot(TimeSpan timeout = default)
+    public PlayerSpyOperation RequestScreenshot(CancellationToken token = default, TimeSpan timeout = default, bool removeFiles = true)
     {
         GameThread.AssertCurrent();
 
@@ -21,7 +21,7 @@ public partial struct SpindlePlayer
         if (timeout.Ticks <= 0)
             timeout = TimeSpan.FromSeconds(10d);
 
-        return new SpyTask(SteamPlayer, timeout);
+        return new PlayerSpyOperation(SteamPlayer, timeout, removeFiles, token);
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ public partial struct SpindlePlayer
     /// </summary>
     /// <exception cref="GameThreadException"/>
     /// <exception cref="PlayerOfflineException"/>
-    public void RequestScreenshot(SpyCompleted callback)
+    public void RequestScreenshot(SpyCompleted callback, bool removeFiles = true)
     {
         if (callback == null)
             throw new ArgumentNullException(nameof(callback));
@@ -38,7 +38,7 @@ public partial struct SpindlePlayer
 
         AssertOnline();
 
-        SpyResult result = new SpyResult(callback, DateTime.UtcNow, SteamPlayer);
+        SpyResult result = new SpyResult(callback, DateTime.UtcNow, SteamPlayer, removeFiles);
         SteamPlayer.player.sendScreenshot(CSteamID.Nil, result.InvokeCallback);
     }
 }

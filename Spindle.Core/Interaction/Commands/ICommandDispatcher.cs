@@ -16,7 +16,7 @@ public interface ICommandDispatcher
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     /// <remarks>Does not look for sub-commands.</remarks>
-    ICommandRegistration? FindParentCommand(string commandName);
+    ICommandRegistration? FindParentCommand(string commandName, bool caseSensitive = true);
 
     /// <summary>
     /// Execute a command as a <paramref name="user"/> from a string of commands and arguments.

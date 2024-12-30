@@ -58,7 +58,7 @@ public enum TranslationOptions
     UnityUINoReplace = UI | TranslateWithUnityRichText,
 
     /// <summary>
-    /// Tells <see cref="ITranslationValueFormatter"/>'s to not add rich text to arguments. All rich text will also be removed from the original translation.
+    /// Tells <see cref="IValueStringConvertService"/>'s to not add rich text to arguments. All rich text will also be removed from the original translation.
     /// </summary>
     NoRichText = 1 << 6,
 

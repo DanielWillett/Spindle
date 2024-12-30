@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -206,5 +206,53 @@
   </data>
   <data name="ExceptionNotValidTranslationCollectionType" xml:space="preserve">
     <value>Type must be a non-abstract subclass of TranslationCollection with a parameterless constructor.</value>
+  </data>
+  <data name="PlayerSpyOperation_Cancelled" xml:space="preserve">
+    <value>Spy request for {0} was cancelled by a CancellationToken.</value>
+  </data>
+  <data name="PlayerSpyOperation_Timeout" xml:space="preserve">
+    <value>Spy request for {0} timed out after {1}.</value>
+  </data>
+  <data name="PlayerSpyOperation_Disconnected" xml:space="preserve">
+    <value>Spy request for {0} cancelled after the player disconnected.</value>
+  </data>
+  <data name="GameThreadDispatchExceptionCurrent" xml:space="preserve">
+    <value>Error in callback dispatched on main thread. See stack trace below.</value>
+  </data>
+  <data name="GameThreadDispatchExceptionNotCurrent" xml:space="preserve">
+    <value>Error in callback dispatched to main thread. See stack trace below.</value>
+  </data>
+  <data name="ExceptionNetStringTooLong" xml:space="preserve">
+    <value>Strings sent to clients can not exceed 2048 characters.</value>
+  </data>
+  <data name="ExceptionInvalidFormat" xml:space="preserve">
+    <value>Input string either has extra formatting arguments or is using an inforrect format string syntax.</value>
+  </data>
+  <data name="ExceptionEmptyString" xml:space="preserve">
+    <value>Parameter must be a non-empty string.</value>
+  </data>
+  <data name="LogPlayerComponentFailedToAssignPlayerProperty" xml:space="preserve">
+    <value>Player component {0} did not assign the Player property to the expected player.</value>
+  </data>
+  <data name="EndArrestPlayerNotArrested" xml:space="preserve">
+    <value>This player is not currently arrested.</value>
+  </data>
+  <data name="LogUnturnedAssetsFieldNotFound" xml:space="preserve">
+    <value>Had to fallback during UnturnedAssets initialization: failed to find field {0}.</value>
+  </data>
+  <data name="LogUnturnedAssetsTypeNotFound" xml:space="preserve">
+    <value>Had to fallback during UnturnedAssets initialization: failed to find type {0}.</value>
+  </data>
+  <data name="LogUnturnedAssetsGenericError" xml:space="preserve">
+    <value>Had to fallback during UnturnedAssets initialization.</value>
+  </data>
+  <data name="LogUnturnedAssetsVersionFieldNotFound" xml:space="preserve">
+    <value>Failed to find field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync.</value>
+  </data>
+  <data name="LogUnturnedAssetsVersionFieldFailed" xml:space="preserve">
+    <value>Failed to create getter for field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync.</value>
+  </data>
+  <data name="ExceptionInvalidEnumType" xml:space="preserve">
+    <value>Unexpected underlying type for enum type {0}.</value>
   </data>
 </root>

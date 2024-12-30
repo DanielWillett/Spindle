@@ -1,6 +1,6 @@
 ﻿using DanielWillett.ReflectionTools;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Spindle.Logging;
 using Spindle.Threading;
 using System;
 using System.Collections.Generic;
@@ -268,7 +268,7 @@ public class SpindlePluginLoader : IDisposable
         public SimpleCommandWindowLogger() : base(Accessor.Formatter.Format<T>()) { }
     }
 
-    private class SimpleCommandWindowLogger : ILogger
+    private class SimpleCommandWindowLogger : ILogger, Microsoft.Extensions.Logging.ILogger
     {
         private readonly string _categoryName;
         public SimpleCommandWindowLogger(Type type) : this(Accessor.Formatter.Format(type)) { }
@@ -278,17 +278,17 @@ public class SpindlePluginLoader : IDisposable
             _categoryName = categoryName;
         }
 
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
+        public void Log<TState>(Microsoft.Extensions.Logging.LogLevel logLevel, Microsoft.Extensions.Logging.EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
         {
             string message = "[" + _categoryName + "] " + formatter(state, exception);
             switch (logLevel)
             {
-                case LogLevel.Warning:
+                case Microsoft.Extensions.Logging.LogLevel.Warning:
                     CommandWindow.LogWarning(message);
                     break;
 
-                case LogLevel.Error:
-                case LogLevel.Critical:
+                case Microsoft.Extensions.Logging.LogLevel.Error:
+                case Microsoft.Extensions.Logging.LogLevel.Critical:
                     CommandWindow.LogError(message);
                     break;
 
@@ -298,8 +298,8 @@ public class SpindlePluginLoader : IDisposable
             }
         }
 
-        public bool IsEnabled(LogLevel logLevel) => true;
-        public IDisposable? BeginScope<TState>(TState state) where TState : notnull => throw new NotSupportedException();
+        public bool IsEnabled(Microsoft.Extensions.Logging.LogLevel logLevel) => true;
+        public IDisposable BeginScope<TState>(TState state) where TState : notnull => throw new NotSupportedException();
     }
 
     public List<Type> GetTypesOfBaseType<T>(bool removeIgnored, bool allowAbstractTypes = false, bool allowValueTypes = true, bool allowSealedTypes = true, bool allowNestedTypes = true)

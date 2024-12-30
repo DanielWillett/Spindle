@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spindle.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -6,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Spindle.Interaction.Commands;
 
 [EditorBrowsable(EditorBrowsableState.Advanced)]
-public class SpindleCommandDispatcher : ICommandDispatcher, ISubCommandContainer
+public class SpindleCommandDispatcher : ICommandDispatcher//, ISubCommandContainer
 {
     private readonly ICommandParser _commandParser;
     private readonly ILogger<SpindleCommandDispatcher> _logger;
@@ -92,14 +93,14 @@ public class SpindleCommandDispatcher : ICommandDispatcher, ISubCommandContainer
             return UniTask.FromResult(false);
         }
 
-        foundCommand = FindCommand(preParsedCommand.CommandName);
+        foundCommand = null;//FindCommand(preParsedCommand.CommandName);
 
-        return TryExecuteCommandAsync()
+        return UniTask.FromResult(false);// TryExecuteCommandAsync()
     }
 
     private async UniTask<bool> TryExecuteCommandIntl(ICommandRegistration command, IInteractionUser user, ParsedCommandInfo info, string original)
     {
-
+        return false;
     }
 
     public UniTask InitializeAsync(CancellationToken token) => throw new NotImplementedException();

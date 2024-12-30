@@ -7,7 +7,7 @@ namespace Spindle.Util;
 /// <summary>
 /// Represents a temporarily indented or not indented section of JSON while using a <see cref="Utf8JsonWriter"/>.
 /// </summary>
-/// <remarks>Use with <see cref="ConfigurationSettings.StartIndenting"/> and <see cref="ConfigurationSettings.StopIndenting"/>.</remarks>
+/// <remarks>Use with <see cref="JsonUtility.StartIndenting"/> and <see cref="JsonUtility.StopIndenting"/>.</remarks>
 public readonly struct JsonIndent : IDisposable
 {
     internal static readonly InstanceSetter<Utf8JsonWriter, JsonWriterOptions>? SetOptions = Accessor.GenerateInstanceSetter<Utf8JsonWriter, JsonWriterOptions>("_options");

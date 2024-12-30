@@ -1,6 +1,7 @@
 ﻿using DanielWillett.ReflectionTools;
 using Microsoft.Extensions.DependencyInjection;
 using Spindle.Localization.ValueFormatters;
+using Spindle.Logging;
 using Spindle.Plugins;
 using Spindle.Util;
 using StackCleaner;

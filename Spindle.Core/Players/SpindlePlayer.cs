@@ -79,6 +79,11 @@ public partial struct SpindlePlayer :
     }
 
     /// <summary>
+    /// Server-unique Net ID for the this player's <see cref="Player"/> component.
+    /// </summary>
+    public readonly NetId NetId => SteamPlayer.player.GetNetId();
+
+    /// <summary>
     /// The base player component for Unturned's vanilla player.
     /// </summary>
     public readonly Player UnturnedPlayer => SteamPlayer.player;
@@ -172,12 +177,20 @@ public partial struct SpindlePlayer :
     /// The world position of the player.
     /// </summary>
     /// <exception cref="GameThreadException">Setter must be on main thread.</exception>
+    /// <exception cref="PlayerOfflineException"/>
     public readonly Vector3 Position
     {
-        get => SteamPlayer.player.transform.position;
+        get
+        {
+            AssertOnline();
+
+            return SteamPlayer.player.transform.position;
+        }
         set
         {
             GameThread.AssertCurrent();
+
+            AssertOnline();
 
             Player player = SteamPlayer.player;
             player.teleportToLocationUnsafe(value - new Vector3(0f, 0.5f, 0f), player.transform.eulerAngles.y);
@@ -189,12 +202,20 @@ public partial struct SpindlePlayer :
     /// </summary>
     /// <remarks>Only the yaw will actually be replicated.</remarks>
     /// <exception cref="GameThreadException">Setter must be on main thread.</exception>
+    /// <exception cref="PlayerOfflineException"/>
     public readonly Quaternion Rotation
     {
-        get => SteamPlayer.player.transform.rotation;
+        get
+        {
+            AssertOnline();
+
+            return SteamPlayer.player.transform.rotation;
+        }
         set
         {
             GameThread.AssertCurrent();
+
+            AssertOnline();
 
             Vector3 eulerAngles = value.eulerAngles;
             Player player = SteamPlayer.player;
@@ -206,12 +227,20 @@ public partial struct SpindlePlayer :
     /// The global rotation (Y-axis) of the player.
     /// </summary>
     /// <exception cref="GameThreadException">Setter must be on main thread.</exception>
+    /// <exception cref="PlayerOfflineException"/>
     public readonly float Yaw
     {
-        get => SteamPlayer.player.transform.eulerAngles.y;
+        get
+        {
+            AssertOnline();
+
+            return SteamPlayer.player.transform.eulerAngles.y;
+        }
         set
         {
             GameThread.AssertCurrent();
+
+            AssertOnline();
 
             Player player = SteamPlayer.player;
             player.teleportToLocationUnsafe(player.transform.position - new Vector3(0f, 0.5f, 0f), value);
@@ -231,7 +260,7 @@ public partial struct SpindlePlayer :
     }
 
     /// <summary>
-    /// Creates a <see cref="SpindlePlayer"/> from a <see cref="SDG.Unturned.Player"/>.
+    /// Creates a <see cref="SpindlePlayer"/> from a <see cref="Player"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static SpindlePlayer Create(Player player)
@@ -243,7 +272,7 @@ public partial struct SpindlePlayer :
     }
 
     /// <summary>
-    /// Creates a <see cref="SpindlePlayer"/> from a <see cref="SDG.Unturned.Player"/>.
+    /// Creates a <see cref="SpindlePlayer"/> from a <see cref="Player"/>.
     /// </summary>
     /// <exception cref="ArgumentNullException"/>
     public static SpindlePlayer Create(PlayerCaller player)
@@ -342,9 +371,8 @@ public partial struct SpindlePlayer :
     }
 
     /// <summary>
-    /// Get a component type linked to this player.
+    /// Get a component type linked to this player, or <see langword="null"/> if it isn't available.
     /// </summary>
-    /// <exception cref="GameThreadException"/>
     public readonly TComponent? ComponentOrNull<TComponent>() where TComponent : IPlayerComponent
     {
         if (_playerComponent is null)
@@ -353,7 +381,11 @@ public partial struct SpindlePlayer :
         return comp;
     }
 
-    private readonly void AssertOnline()
+    /// <summary>
+    /// Throws an exception if this player is offline.
+    /// </summary>
+    /// <exception cref="PlayerOfflineException"/>
+    public readonly void AssertOnline()
     {
         if (!IsOnline || SteamPlayer.player == null)
             throw new PlayerOfflineException(Steam64);
@@ -366,7 +398,14 @@ public partial struct SpindlePlayer :
     public static implicit operator SpindlePlayer(Player player) => new SpindlePlayer(player.channel.owner);
     public static implicit operator SpindlePlayer(SteamPlayer player) => new SpindlePlayer(player);
 
+    /// <summary>
+    /// Compare two players by Steam64 ID.
+    /// </summary>
     public static bool operator ==(SpindlePlayer left, SpindlePlayer right) => left.Steam64.m_SteamID == right.Steam64.m_SteamID;
+
+    /// <summary>
+    /// Compare two players by Steam64 ID.
+    /// </summary>
     public static bool operator !=(SpindlePlayer left, SpindlePlayer right) => left.Steam64.m_SteamID != right.Steam64.m_SteamID;
 
     /// <summary>

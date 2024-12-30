@@ -5,6 +5,7 @@ using Spindle.Util;
 using StackCleaner;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
@@ -19,7 +20,7 @@ using ColorSetting = (int ExtendedColor, ConsoleColor BasicColor);
 public struct SpindleFormattedLogValues
 {
     [ThreadStatic]
-    private static char[] _formatBuffer;
+    private static char[]? _formatBuffer;
 
     internal static readonly ColorSetting NumberDefault = (TerminalColorHelper.ToArgb(new Color32(181, 206, 168, 255)), ConsoleColor.DarkYellow);
     internal static readonly ColorSetting StructDefault = (TerminalColorHelper.ToArgb(new Color32(134, 198, 145, 255)), ConsoleColor.DarkGreen);
@@ -121,7 +122,7 @@ public struct SpindleFormattedLogValues
         int index = 0;
         for (int i = 0; i < Parameters.Count; ++i)
         {
-            object? value = Parameters[i];
+            object value = Parameters[i];
             int prefixSize, suffixSize, argb;
             scoped ReadOnlySpan<char> formatted;
 
@@ -174,7 +175,7 @@ public struct SpindleFormattedLogValues
             }
             else
             {
-                formatted = Converter?.Format(value, in parameters, null) ?? value?.ToString() ?? default;
+                formatted = FormatValue(value, in parameters);
 
                 if (useColor && Converter != null)
                     TryDecideColor(value, out argb, out prefixSize, out suffixSize, color);
@@ -215,6 +216,18 @@ public struct SpindleFormattedLogValues
         }
 
         return TranslationFormattingUtility.FormatString(Message, _formatBuffer.AsSpan(0, index), indexBuffer);
+    }
+
+    private readonly ReadOnlySpan<char> FormatValue(object value, in ValueFormatParameters parameters)
+    {
+        switch (value)
+        {
+            case StackTrace st:
+                return SpindleLauncher.LoggerProvider.StackCleaner.GetString(st);
+
+            default:
+                return Converter?.Format(value, in parameters, null) ?? value?.ToString() ?? default;
+        }
     }
 
     internal static void TryDecideColor(object? parameter, out int argb, out int prefixSize, out int suffixSize, StackColorFormatType coloring)

@@ -1,6 +1,7 @@
 ﻿using DanielWillett.JavaPropertiesParser;
 using DanielWillett.ReflectionTools;
 using DanielWillett.ReflectionTools.Formatting;
+using Spindle.Logging;
 using Spindle.Plugins;
 using Spindle.Util;
 using System;

@@ -61,6 +61,15 @@ namespace Spindle.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This player is not currently arrested..
+        /// </summary>
+        internal static string EndArrestPlayerNotArrested {
+            get {
+                return ResourceManager.GetString("EndArrestPlayerNotArrested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to URL scheme must be http or https..
         /// </summary>
         internal static string ExceptionBrowserRequestNotHttp {
@@ -88,6 +97,15 @@ namespace Spindle.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parameter must be a non-empty string..
+        /// </summary>
+        internal static string ExceptionEmptyString {
+            get {
+                return ResourceManager.GetString("ExceptionEmptyString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enum converters can not be added later. Use SetEnumStringConverter instead..
         /// </summary>
         internal static string ExceptionEnumConverterNotValid {
@@ -111,6 +129,33 @@ namespace Spindle.Properties {
         internal static string ExceptionGameThreadContext {
             get {
                 return ResourceManager.GetString("ExceptionGameThreadContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected underlying type for enum type {0}..
+        /// </summary>
+        internal static string ExceptionInvalidEnumType {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidEnumType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input string either has extra formatting arguments or is using an inforrect format string syntax..
+        /// </summary>
+        internal static string ExceptionInvalidFormat {
+            get {
+                return ResourceManager.GetString("ExceptionInvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strings sent to clients can not exceed 2048 characters..
+        /// </summary>
+        internal static string ExceptionNetStringTooLong {
+            get {
+                return ResourceManager.GetString("ExceptionNetStringTooLong", resourceCulture);
             }
         }
         
@@ -178,6 +223,24 @@ namespace Spindle.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error in callback dispatched on main thread. See stack trace below..
+        /// </summary>
+        internal static string GameThreadDispatchExceptionCurrent {
+            get {
+                return ResourceManager.GetString("GameThreadDispatchExceptionCurrent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error in callback dispatched to main thread. See stack trace below..
+        /// </summary>
+        internal static string GameThreadDispatchExceptionNotCurrent {
+            get {
+                return ResourceManager.GetString("GameThreadDispatchExceptionNotCurrent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find Languages.json or Languages.yml file..
         /// </summary>
         internal static string LanguageFileNotFound {
@@ -205,6 +268,15 @@ namespace Spindle.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player component {0} did not assign the Player property to the expected player..
+        /// </summary>
+        internal static string LogPlayerComponentFailedToAssignPlayerProperty {
+            get {
+                return ResourceManager.GetString("LogPlayerComponentFailedToAssignPlayerProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Constructor for player component {0} threw an exception for player {1}..
         /// </summary>
         internal static string LogPlayerComponentFailedToCreate {
@@ -228,6 +300,78 @@ namespace Spindle.Properties {
         internal static string LogPlayerComponentFailedToInitialize {
             get {
                 return ResourceManager.GetString("LogPlayerComponentFailedToInitialize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Had to fallback during UnturnedAssets initialization: failed to find field {0}..
+        /// </summary>
+        internal static string LogUnturnedAssetsFieldNotFound {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsFieldNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Had to fallback during UnturnedAssets initialization..
+        /// </summary>
+        internal static string LogUnturnedAssetsGenericError {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsGenericError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Had to fallback during UnturnedAssets initialization: failed to find type {0}..
+        /// </summary>
+        internal static string LogUnturnedAssetsTypeNotFound {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsTypeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to create getter for field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync..
+        /// </summary>
+        internal static string LogUnturnedAssetsVersionFieldFailed {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsVersionFieldFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to find field {0} during UnturnedAssets initialization. Assets loaded after startup may not stay in sync..
+        /// </summary>
+        internal static string LogUnturnedAssetsVersionFieldNotFound {
+            get {
+                return ResourceManager.GetString("LogUnturnedAssetsVersionFieldNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spy request for {0} was cancelled by a CancellationToken..
+        /// </summary>
+        internal static string PlayerSpyOperation_Cancelled {
+            get {
+                return ResourceManager.GetString("PlayerSpyOperation_Cancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spy request for {0} cancelled after the player disconnected..
+        /// </summary>
+        internal static string PlayerSpyOperation_Disconnected {
+            get {
+                return ResourceManager.GetString("PlayerSpyOperation_Disconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spy request for {0} timed out after {1}..
+        /// </summary>
+        internal static string PlayerSpyOperation_Timeout {
+            get {
+                return ResourceManager.GetString("PlayerSpyOperation_Timeout", resourceCulture);
             }
         }
         
